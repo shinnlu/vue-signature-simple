@@ -33,6 +33,7 @@
           <button @click="deleteImg">Clear</button>
           <button @click="isEmpty">Pad is empty?</button>
           <button @click="getSignature">Get signature</button>
+          <button @click="getID">Get ID</button>
         </div>
       </div>
 
@@ -117,6 +118,9 @@ export default {
     },
     changeColor (color) {
       this.strokeColor = color
+    },
+    getID () {
+      alert(this.$refs.s1.getID())
     }
   }
 }

@@ -151,6 +151,9 @@ export default {
      */
     isEmpty () {
       return this.empty
+    },
+    getID () {
+      return this.id
     }
   },
   mounted () {

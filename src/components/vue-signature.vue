@@ -2,6 +2,7 @@
   <div class="vue-signature" :style="{ width: width + 'px', height: height + 'px' }">
     <canvas
       :id="id"
+      :name="id"
       :width="width"
       :height="height"
       @mousedown.prevent="mouseDown"

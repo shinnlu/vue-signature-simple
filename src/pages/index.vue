@@ -35,6 +35,37 @@
           <button @click="getSignature">Get signature</button>
           <button @click="getID">Get ID</button>
         </div>
+        <div class="row">
+          <div class="col">
+            <vue-signature
+              ref="s2"
+              :width="width"
+              :height="height"
+              :stroke-size="strokeSize"
+              :stroke-color="strokeColor" />
+            <ul class="colors">
+              <li
+                class="color"
+                :style="{ background: item }"
+                @click="changeColor(item)"
+                v-for="item in colors"
+                :key="item"
+                :class="{ active: strokeColor === item }"></li>
+            </ul>
+            <input type="text" v-model="strokeColor" class="input">
+          </div>
+          <div class="col">
+            <img :src="signature2" alt="signature" v-if="signature2" class="signature">
+            <div class="signature" :style="{ width: (parseInt(width) + 2) + 'px', height: (parseInt(height) + 2) + 'px' }" v-else></div>
+            <p style="margin-top: 5px;">Signature Image (base64)</p>
+          </div>
+        </div>
+        <div class="btn">
+          <button @click="deleteImg2">Clear</button>
+          <button @click="isEmpty2">Pad is empty?</button>
+          <button @click="getSignature2">Get signature</button>
+          <button @click="getID2">Get ID</button>
+        </div>
       </div>
 
       <div class="section-2">
@@ -94,6 +125,7 @@ export default {
   data () {
     return {
       signature: '',
+      signature2: '',
       strokeColor: '#4b5cc4',
       strokeSize: 2,
       width: 400,
@@ -121,6 +153,26 @@ export default {
     },
     getID () {
       alert(this.$refs.s1.getID())
+    },
+    getSignature2 () {
+      this.signature2 = this.$refs.s2.getSignature()
+    },
+    deleteImg2 () {
+      this.$refs.s2.clear()
+      this.signature2 = ''
+    },
+    isEmpty2 () {
+      if (this.$refs.s2.isEmpty()) {
+        alert('内容为空')
+      } else {
+        alert('已有签名内容')
+      }
+    },
+    changeColor2 (color) {
+      this.strokeColor = color
+    },
+    getID2 () {
+      alert(this.$refs.s2.getID())
     }
   }
 }

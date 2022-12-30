@@ -33,7 +33,7 @@ const routes = [
     redirect: '/'
   }
 ]
-console.log(routes)
+// console.log(routes)
 const router = new VueRouter({
   mode: 'hash',
   routes

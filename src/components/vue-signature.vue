@@ -164,7 +164,7 @@ export default {
       var url = URL.createObjectURL(pic)
       var img = new Image()
       img.onload = function () {
-        self.context.drawImage(img, 0, 0, this.width, this.height)
+        self.context.drawImage(img, 0, 0, self.width, self.height)
       }
       img.src = url
       this.empty = false

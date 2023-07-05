@@ -1,7 +1,6 @@
 <template>
   <div class="donate container">
     <h3>Donate by Wechat Pay</h3>
-    <img src="/wechat-pay.png" alt="wechat pay donate">
   </div>
 </template>
 <style>

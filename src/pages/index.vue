@@ -34,6 +34,10 @@
           <button @click="isEmpty">Pad is empty?</button>
           <button @click="getSignature">Get signature</button>
           <button @click="getID">Get ID</button>
+          <button @click="chooseFile">Upload Picture</button>
+          <button @click="lockPad(true)" v-if="!LockSignature1">Lock Pad</button>
+          <button @click="lockPad(false)" v-else>UnLock Pad</button>
+          <input id="imageUploader1" type="file" style="visibility:hidden;" @change="onFileChange" accept="image/jpeg,image/png" />
         </div>
         <div class="row">
           <div class="col">
@@ -125,6 +129,7 @@ export default {
   data () {
     return {
       signature: '',
+      LockSignature1: false,
       signature2: '',
       strokeColor: '#4b5cc4',
       strokeSize: 2,
@@ -153,6 +158,18 @@ export default {
     },
     getID () {
       alert(this.$refs.s1.getID())
+    },
+    chooseFile () {
+      const fileInputElement = document.getElementById('imageUploader1')
+      fileInputElement.click()
+    },
+    onFileChange (e) {
+      if (e.target.files.length === 0) return false
+      this.$refs.s1.loadFromPicture(e.target.files[0])
+    },
+    lockPad (value) {
+      this.LockSignature1 = value
+      this.$refs.s1.lockPad(value)
     },
     getSignature2 () {
       this.signature2 = this.$refs.s2.getSignature()

@@ -79,6 +79,21 @@
           <td>clear data of signature image</td>
           <td>-</td>
         </tr>
+        <tr>
+          <td>getID</td>
+          <td>get canvas element id</td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>loadFromPicture</td>
+          <td>load from upload picture</td>
+          <td>file</td>
+        </tr>
+        <tr>
+          <td>lockPad</td>
+          <td>disable input of signature pad</td>
+          <td>boolean</td>
+        </tr>
         </tbody>
       </table>
     </section>

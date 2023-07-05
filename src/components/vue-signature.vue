@@ -62,7 +62,8 @@ export default {
         y: 0
       },
       log: [],
-      empty: true
+      empty: true,
+      lock: false
     }
   },
   methods: {
@@ -79,6 +80,7 @@ export default {
     clear () {
       this.context.clearRect(0, 0, this.width, this.height)
       this.empty = true
+      this.lock = false
     },
     /**
      * coordinate transformation
@@ -115,6 +117,7 @@ export default {
      * @param e
      */
     mouseMove (e) {
+      if (this.lock) return false
       if (this.isMouseDown) {
         const clientX = e.clientX || e.changedTouches[0].clientX
         const clientY = e.clientY || e.changedTouches[0].clientY
@@ -155,6 +158,19 @@ export default {
     },
     getID () {
       return this.id
+    },
+    loadFromPicture (pic) {
+      const self = this
+      var url = URL.createObjectURL(pic)
+      var img = new Image()
+      img.onload = function () {
+        self.context.drawImage(img, 0, 0, this.width, this.height)
+      }
+      img.src = url
+      this.empty = false
+    },
+    lockPad (value) {
+      this.lock = value
     }
   },
   mounted () {

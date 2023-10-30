@@ -1,47 +1,43 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter)
-
+import { createRouter, createWebHashHistory, onBeforeRouteLeave } from 'vue-router'
+import layout from "@/pages/layout.vue"
+import index from "@/pages/index.vue"
+import api from "@/pages/document.vue"
+import donate from '@/pages/donate.vue'
 const title = 'Vue-Signature-Simple'
 
-const routes = [
-  {
-    path: '/',
-    component: () => import('@/pages/layout.vue'),
-    children: [
-      {
-        path: '/',
-        name: 'home',
-        component: () => import('@/pages/index.vue')
-      },
-      {
-        path: 'document',
-        name: 'document',
-        component: () => import('@/pages/document.vue')
-      },
-      {
-        path: 'donate',
-        name: 'donate',
-        component: () => import('@/pages/donate.vue')
-      }
-    ]
-  },
-  {
-    path: '*',
-    name: '404',
-    redirect: '/'
+export const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [
+	/*{
+		path: '/',
+		name: 'index',
+		component: layout
+	},*/
+	{
+		path: '/',
+		name: 'index',
+		component: index
+	},
+	{
+		path: '/api',
+		name: 'api',
+		component: api
+	},
+	{
+		path: '/donate',
+		name: 'donate',
+		component: donate
+	}
+  ],
+  onBeforeRouteLeave(to, from, next) {
+	const answer = window.confirm('quit?')
+	if(!answer) return false;
+	// if (this.count > 0) {
+	//   next(false);
+	// } else {
+	  next();
+	// }
   }
-]
-// console.log(routes)
-const router = new VueRouter({
-  mode: 'hash',
-  routes
-})
-
-router.beforeEach((to, from, next) => {
-  document.title = to.meta.title ? `${to.meta.title} - ${title}` : title
-  next()
-})
+});
 
 export default router

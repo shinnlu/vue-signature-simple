@@ -7,7 +7,7 @@
         </a>
         <ul class="menu fr">
           <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/document">API</router-link></li>
+          <li><router-link to="/api">API</router-link></li>
           <li><router-link to="/donate">Donate</router-link></li>
         </ul>
       </div>

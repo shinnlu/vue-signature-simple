@@ -1,47 +1,48 @@
-# vue-signboard
+# Vue-Signboard
 
-> A electronic signature component by Vue.js
+This template should help get you started developing with Vue 3 in Vite.
 
-## Usage
-install
-```
-npm install vue-signboard
-```
+## Recommended IDE Setup
 
-main.js
-```
-import VueSignature from 'vue-signboard';
-Vue.use(VueSignature);
-```
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-.vue template
-```
-<vue-signature ref='s1' />
-<vue-signature ref='s2' />
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
 ```
 
-## API
+### Compile and Hot-Reload for Development
 
-Props
+```sh
+npm run dev
+```
 
-|  name   | description  | default |
-|  ----  | ----  | ---- |
-| width  | signature width | 300 |
-| height  | signature height | 100 |
-| strokeColor  | pen color | black |
-| strokeSize  | pen size | 2 |
+### Compile and Minify for Production
 
-Methods
+```sh
+npm run build
+```
 
-|  name   | description  | params |
-|  ----  | ----  | ---- |
-| clear  | clear canvas |  |
-| getSignature  | get signature base64 data | format: (image/png)(image/jpeg)(image/svg+xml) |
-| isEmpty  | return canvas is empty? |  |
-| getID  | get canvas element id| |
-| loadFromPicture | load from upload picture| file |
-| lockPad | disable input of signature pad | boolean |
+### Run End-to-End Tests with [Playwright](https://playwright.dev)
 
-## License
+```sh
+# Install browsers for the first run
+npx playwright install
 
-MIT
+# When testing on CI, must build the project first
+npm run build
+
+# Runs the end-to-end tests
+npm run test:e2e
+# Runs the tests only on Chromium
+npm run test:e2e -- --project=chromium
+# Runs the tests of a specific file
+npm run test:e2e -- tests/example.spec.ts
+# Runs the tests in debug mode
+npm run test:e2e -- --debug
+```

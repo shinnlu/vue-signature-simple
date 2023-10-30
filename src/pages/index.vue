@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <div class="section-1">
-        <h2 class="title">Vue-Signature-Simple</h2>
+        <h2 class="title">Vue-Signature</h2>
         <p class="sub-title">A electronic signature component by Vue.js</p>
         <div class="row">
           <div class="col">
@@ -90,14 +90,10 @@ Vue.use(VueSignature);
 <span class="tag">&lt;vue-signature ref=</span><span class="string">"s2"</span><span class="tag"> /&gt;</span>
 </pre>
 <p class="help">The ref attribute can distinguish multiple signature components</p>
-          <h4 style="margin-top: 1em;">Methods example</h4>
+      <h4 style="margin-top: 1em;">Methods example</h4>
 <pre><span class="keyword">this</span>.$refs.s1.clear()</pre>
         </div>
 
-        <h3>Demo</h3>
-        <div class="content">
-          <a href="https://draw.zhangziheng.com" target="_blank">随手画</a>
-        </div>
       </div>
     </div>
   </div>
@@ -120,7 +116,7 @@ Vue.use(VueSignature);
 }
 </style>
 <script>
-import VueSignature from '../../index'
+import VueSignature from '../components/vue-signature.vue'
 export default {
   name: 'App',
   components: {

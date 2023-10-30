@@ -1,48 +1,47 @@
-# Vue-Signboard
+# vue-signboard
 
-This template should help get you started developing with Vue 3 in Vite.
+> A electronic signature component by Vue.js
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+## Usage
+install
+```
+npm install vue-signboard
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+main.js
+```
+import VueSignature from 'vue-signboard';
+Vue.use(VueSignature);
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
+.vue template
+```
+<vue-signature ref='s1' />
+<vue-signature ref='s2' />
 ```
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+## API
 
-```sh
-# Install browsers for the first run
-npx playwright install
+Props
 
-# When testing on CI, must build the project first
-npm run build
+|  name   | description  | default |
+|  ----  | ----  | ---- |
+| width  | signature width | 300 |
+| height  | signature height | 100 |
+| strokeColor  | pen color | black |
+| strokeSize  | pen size | 2 |
 
-# Runs the end-to-end tests
-npm run test:e2e
-# Runs the tests only on Chromium
-npm run test:e2e -- --project=chromium
-# Runs the tests of a specific file
-npm run test:e2e -- tests/example.spec.ts
-# Runs the tests in debug mode
-npm run test:e2e -- --debug
-```
+Methods
+
+|  name   | description  | params |
+|  ----  | ----  | ---- |
+| clear  | clear canvas |  |
+| getSignature  | get signature base64 data | format: (image/png)(image/jpeg)(image/svg+xml) |
+| isEmpty  | return canvas is empty? |  |
+| getID  | get canvas element id| |
+| loadFromPicture | load from upload picture| file |
+| lockPad | disable input of signature pad | boolean |
+
+## License
+
+MIT
